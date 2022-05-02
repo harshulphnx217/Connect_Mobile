@@ -13,4 +13,5 @@
     <string name="tnc">I accept all the Terms and Conditions</string>
     <string name="address">Address</string>
     <string name="country_of_residence">Country Of Residence</string>
+    <string name="comment_here">Comment here!</string>
 </resources>
