@@ -10,6 +10,7 @@
         android:id="@+id/imageView2"
         android:layout_width="250dp"
         android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/connect_main"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +23,8 @@
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="45dp"
         android:elevation="30dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,6 +60,7 @@
                 android:background="@drawable/input_layout"
                 android:fontFamily="@font/poppins_regular"
                 android:hint="Phone Number"
+                android:maxLength="10"
                 android:inputType="phone"
                 android:padding="10dp"
                 android:textColor="@color/blue"
@@ -91,87 +93,74 @@
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
+            <TextView
+                android:id="@+id/forgot_password_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Forgot Your Password ?"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/reset_password_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="Click Here To Reset Password"
+                android:textColor="@color/blue"
+                android:textSize="14sp" />
 
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/forgot_password_tv"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:text="Forgot Your Password ?"
-        android:textColor="@color/black"
-        android:textSize="14sp"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/card_view_layout"
+        android:elevation="30dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="25dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/card_view"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="1.0">
 
-    <TextView
-        android:id="@+id/reset_password_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="50dp"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:text="Click Here To Reset Password"
-        android:textColor="@color/blue"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgot_password_tv"
-        app:layout_constraintVertical_bias="0.0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5sp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="Not Registered Yet?"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/register_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:elevation="30dp"
-            android:paddingBottom="30sp"
-            android:paddingTop="15dp"
-            android:paddingHorizontal="15dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            android:background="@drawable/card_view_layout"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/reset_password_btn"
-            app:layout_constraintVertical_bias="1.0">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginStart="5sp"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:text="Not Registered Yet?"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/register_btn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginHorizontal="10dp"
-                android:background="@drawable/button_background_layout"
-                android:fontFamily="@font/poppins_regular"
-                android:shadowColor="@color/black"
-                android:text="@string/register"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
-        </LinearLayout>
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_background_layout"
+            android:fontFamily="@font/poppins_regular"
+            android:shadowColor="@color/black"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
 
 
 
