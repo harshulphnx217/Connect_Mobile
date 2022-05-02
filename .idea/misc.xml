@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/button_background_layout.xml" value="0.173" />
+        <entry key="app/src/main/res/drawable/ic_back_icon.xml" value="0.173" />
         <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_comment_icon.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_like_icon.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/ic_post_icon.xml" value="0.173" />
         <entry key="app/src/main/res/drawable/ic_upload_post.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/input_layout.xml" value="0.173" />
         <entry key="app/src/main/res/drawable/like_icon.xml" value="0.1565" />
+        <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.27314814814814814" />
         <entry key="app/src/main/res/layout/activity_home_screen.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2552083333333333" />
         <entry key="app/src/main/res/layout/post_item.xml" value="0.2852523803710938" />
