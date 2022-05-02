@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Connect</string>
+    <string name="reset_password">Reset Password</string>
 </resources>
