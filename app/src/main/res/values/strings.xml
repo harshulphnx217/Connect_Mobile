@@ -3,6 +3,7 @@
     <string name="reset_password">Reset Password</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+<<<<<<< Updated upstream
     <string name="date_of_birth">Date Of Birth</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="password">Password</string>
@@ -14,4 +15,7 @@
     <string name="address">Address</string>
     <string name="country_of_residence">Country Of Residence</string>
     <string name="comment_here">Comment here!</string>
+=======
+    <string name="change_password">Change Password</string>
+>>>>>>> Stashed changes
 </resources>

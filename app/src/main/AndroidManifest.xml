@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect">
         <activity
+            android:name=".Change_Password"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
