@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun login(phone:String, password:String){
-//        val queue = SingletonRequestQueue.getInstance(this.applicationContext)
         val url = "https://connect-api-social.herokuapp.com/user/login"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,url,
