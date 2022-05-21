@@ -70,7 +70,8 @@ class MainActivity : AppCompatActivity() {
     private fun login(phone:String, password:String){
         val url = "https://connect-api-social.herokuapp.com/user/login"
         val stringRequest: StringRequest = object: StringRequest(
-            Method.POST,url,
+            Method.POST,
+            url,
             Response.Listener {
                     response ->
                 val responseJson = JSONObject(response)
