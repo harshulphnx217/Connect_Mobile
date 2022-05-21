@@ -131,6 +131,11 @@ class Register : AppCompatActivity() {
                 phoneNumberIp.requestFocus()
                 return@setOnClickListener
             }
+            if(phoneNumberIp.text.length < 10){
+                phoneNumberIp.error = "Enter a valid phone number"
+                phoneNumberIp.requestFocus()
+                return@setOnClickListener
+            }
             if(userIdIp.text.equals("")){
                 userIdIp.error = "This is a required field"
                 userIdIp.requestFocus()
