@@ -15,4 +15,9 @@
     <string name="country_of_residence">Country Of Residence</string>
     <string name="comment_here">Comment here!</string>
     <string name="change_password">Change Password</string>
+    <string name="user_id">User ID</string>
+    <string name="reg_success_msg">User Successfully Registered!</string>
+    <string name="reg_failed_msg">User Registration Failed, try again later</string>
+    <string name="please_wait_we_are_registering_you_to_our_service">Please Wait we are registering you to our service</string>
+    <string name="back_to_login">Back to login</string>
 </resources>

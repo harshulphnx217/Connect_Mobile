@@ -30,12 +30,14 @@
                 android:src="@drawable/connect_main" />
 
             <LinearLayout
+                android:id="@+id/register_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginVertical="5dp"
                 android:orientation="vertical"
+                android:visibility="visible"
                 android:background="@drawable/registration_card_layout"
                 android:elevation="10dp"
                 android:padding="10dp"
@@ -67,6 +69,21 @@
                     android:textColorHint="@color/light_blue" />
 
                 <EditText
+                    android:id="@+id/user_id_input_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="5dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:background="@drawable/input_layout"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="@string/user_id"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:textColor="@color/blue"
+                    android:textColorHint="@color/light_blue" />
+
+                <EditText
                     android:id="@+id/first_name_input_et"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,21 +107,6 @@
                     android:background="@drawable/input_layout"
                     android:fontFamily="@font/poppins_regular"
                     android:hint="@string/last_name"
-                    android:inputType="text"
-                    android:layout_marginHorizontal="10dp"
-                    android:padding="10dp"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/light_blue" />
-
-                <EditText
-                    android:id="@+id/address_input_et"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="5dp"
-                    android:background="@drawable/input_layout"
-                    android:fontFamily="@font/poppins_regular"
-                    android:hint="@string/address"
                     android:inputType="text"
                     android:layout_marginHorizontal="10dp"
                     android:padding="10dp"
@@ -155,8 +157,7 @@
                     android:padding="10dp"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/light_blue" />
-
-                <EditText
+                <TextView
                     android:id="@+id/reg_date_of_birth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -165,36 +166,51 @@
                     android:background="@drawable/input_layout"
                     android:fontFamily="@font/poppins_regular"
                     android:hint="@string/date_of_birth"
+                    android:textSize="18sp"
                     android:layout_marginHorizontal="10dp"
-                    android:inputType="date"
                     android:padding="10dp"
                     android:textColor="@color/blue"
                     android:textColorHint="@color/light_blue" />
 
-                <EditText
-                    android:id="@+id/reg_country_et"
+                <Spinner
+                    android:id="@+id/reg_country_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginVertical="5dp"
                     android:background="@drawable/input_layout"
                     android:fontFamily="@font/poppins_regular"
-                    android:hint="@string/country_of_residence"
                     android:layout_marginHorizontal="10dp"
                     android:inputType="text"
-                    android:padding="10dp"
+                    android:paddingHorizontal="5dp"
+                    android:spinnerMode="dropdown"
+                    android:textColor="@color/blue" />
+
+                <Spinner
+                    android:id="@+id/gender_input_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/input_layout"
+                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginHorizontal="10dp"
+                    android:paddingHorizontal="5dp"
                     android:textColor="@color/blue"
+                    android:spinnerMode="dropdown"
                     android:textColorHint="@color/light_blue" />
 
                 <CheckBox
                     android:id="@+id/tnc_checkbox"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/tnc"
                     android:layout_marginVertical="5dp"
+                    android:minHeight="48dp"
+                    android:text="@string/tnc"
                     android:textColor="@color/black" />
 
                 <Button
+                    android:id="@+id/register_user_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
@@ -207,6 +223,76 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/secondary_lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="60dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:background="@drawable/registration_card_layout"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:paddingTop="30dp">
+
+                <ProgressBar
+                    android:id="@+id/register_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="visible"
+                    android:layout_marginVertical="30dp"/>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/success_animation"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:layout_marginVertical="20dp"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/success_anim"/>
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/failed_animation"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:layout_marginVertical="20dp"
+                    app:lottie_rawRes="@raw/failed_anim"/>
+
+                <TextView
+                    android:id="@+id/progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="15sp"
+                    android:layout_marginHorizontal="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/please_wait_we_are_registering_you_to_our_service"/>
+
+                <Button
+                    android:id="@+id/back_to_login_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:background="@drawable/button_background_layout"
+                    android:textColor="@color/white"
+                    android:paddingHorizontal="15dp"
+                    android:text="@string/back_to_login"/>
 
             </LinearLayout>
 
