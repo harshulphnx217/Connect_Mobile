@@ -77,7 +77,7 @@ class HomeScreen : AppCompatActivity() {
                             postTemp.getString("profile_pic"))
                         postArray.add(postObj)
                     }
-                    postRecyclerView.adapter = PostAdapter(postArray)
+                    postRecyclerView.adapter = PostAdapter(postArray,apiKey)
                 }
                 else{
                     Toast.makeText(this,"Invalid API Key",Toast.LENGTH_LONG).show()
