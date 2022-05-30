@@ -35,6 +35,7 @@ class PostAdapter(private val postList: ArrayList<Post>,private val apiKey:Strin
         val postTitle: TextView = view.findViewById(R.id.post_title)
         val postLikes: TextView = view.findViewById(R.id.post_like_text_view)
         val likeLayout: LinearLayout = view.findViewById(R.id.like_linear_layout)
+        val commentLyt : LinearLayout = view.findViewById(R.id.comment_linear_layout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -50,6 +51,7 @@ class PostAdapter(private val postList: ArrayList<Post>,private val apiKey:Strin
         holder.postTitle.text = postItem.postTitle
         holder.userName.text = postItem.userName
         holder.postLikes.text =  postItem.noOfLikes
+
         Glide.with(holder.itemView.context)
             .load(postItem.postImgLink)
             .placeholder(R.drawable.demo_pic)
@@ -65,7 +67,12 @@ class PostAdapter(private val postList: ArrayList<Post>,private val apiKey:Strin
 
         holder.mainLayout.setOnClickListener{
             val intent = Intent(holder.itemView.context, PostDetailsActivity::class.java)
-            holder.itemView.context.startActivity(intent)
+            holder.itemView.context.startActivity(intent.putExtra("post_id",postItem.postId))
+        }
+
+        holder.commentLyt.setOnClickListener{
+            val intent = Intent(holder.itemView.context, PostDetailsActivity::class.java)
+            holder.itemView.context.startActivity(intent.putExtra("post_id",postItem.postId))
         }
 
         holder.likeLayout.setOnClickListener{
