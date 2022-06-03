@@ -1,13 +1,9 @@
 package com.connect.connect
 
-
-import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.view.inputmethod.InputMethodManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -106,7 +102,7 @@ class PostDetailsActivity : AppCompatActivity() {
                         .into(profileImg)
                 }
                 else{
-                    Log.d("Result",response);
+                    Log.d("Result",response)
                     Toast.makeText(this,response, Toast.LENGTH_SHORT).show()
                 }
             }, Response.ErrorListener {
@@ -139,10 +135,10 @@ class PostDetailsActivity : AppCompatActivity() {
                     response ->
                 val responseJson = JSONObject(response)
                 if(responseJson.getInt("status") == 200){
-                    Log.d("Result","Success");
+                    Log.d("Result","Success")
                 }
                 else{
-                    Log.d("Result",response);
+                    Log.d("Result",response)
                     Toast.makeText(this,response, Toast.LENGTH_SHORT).show()
                 }
             }, Response.ErrorListener {
