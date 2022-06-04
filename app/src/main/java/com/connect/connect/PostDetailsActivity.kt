@@ -161,7 +161,4 @@ class PostDetailsActivity : AppCompatActivity() {
         SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
     }
 
-    override fun onBackPressed() {
-        startActivity(Intent(this,HomeScreen::class.java))
-    }
 }
