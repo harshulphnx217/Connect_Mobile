@@ -244,7 +244,7 @@ class Register : AppCompatActivity() {
             1,
             DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         )
-        SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest);
+        SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
     }
 
     override fun onBackPressed() {

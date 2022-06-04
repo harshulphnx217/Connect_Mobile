@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -20,6 +21,7 @@ class HomeScreen : AppCompatActivity() {
 
     private lateinit var postRecyclerView: RecyclerView
     private lateinit var profileBtn: CircleImageView
+    private lateinit var homeRefreshLayout: SwipeRefreshLayout
 
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
@@ -41,16 +43,19 @@ class HomeScreen : AppCompatActivity() {
             getProfilePic(apiKey)
         }
 
-        // TODO:: Change this part it will log out instead go to
-        //  profile activity, there clear the shared prefs
         profileBtn.setOnClickListener {
-            val editor = sharedPreferences.edit()
-            editor.putString(KEY_APIKEY,null)
-            editor.apply()
-            startActivity(Intent(this,MainActivity::class.java))
+            startActivity(Intent(this,ProfileActivity::class.java))
         }
 
         postRecyclerView = findViewById(R.id.post_recycler_view)
+        homeRefreshLayout = findViewById(R.id.home_refresh_layout)
+
+        homeRefreshLayout.setOnRefreshListener {
+            if (apiKey != null) {
+                getPosts(apiKey)
+                getProfilePic(apiKey)
+            }
+        }
 
     }
 
@@ -62,8 +67,10 @@ class HomeScreen : AppCompatActivity() {
             Response.Listener {
                     response ->
                 val responseJson = JSONObject(response)
+                homeRefreshLayout.isRefreshing = false
                 if(responseJson.getInt("status") == 200){
                     val resultArray: JSONArray = responseJson.getJSONArray("result")
+                    postArray.clear()
                     for(i in 0 until resultArray.length()){
                         val postTemp: JSONObject = resultArray.getJSONObject(i)
                         val postObj = Post(postTemp.getString("posted_by"),

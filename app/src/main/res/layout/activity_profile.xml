@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <ImageView
+        android:id="@+id/back_icon_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_margin="20dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:src="@drawable/ic_back_icon" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image_view"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_margin="20dp"
+        android:src="@drawable/demo_pic" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image_view"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintVertical_bias="0.0">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="John Doe"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_semi_bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:textSize="15sp"
+                android:text="Basic Information"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/input_layout">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Phone Number"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/input_layout">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Email Address"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/input_layout">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Date Of Birth"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:textSize="15sp"
+                android:text="Other Information"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_friends_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Number of Friends: 123"/>
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                app:strokeWidth="1dp"
+                android:elevation="15dp"
+                app:strokeColor="#008000"
+                android:text="Find People"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="#008000"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:textSize="15sp"
+                android:text="Settings"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_edit_profile_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Edit Profile"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_change_password_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Change Password"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_post_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Post Archive"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/logout_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_logout_icon"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Logout"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

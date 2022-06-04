@@ -97,10 +97,10 @@ class PostAdapter(private val postList: ArrayList<Post>,private val apiKey:Strin
                     response ->
                 val responseJson = JSONObject(response)
                 if(responseJson.getInt("status") == 200){
-                    Log.d("Result","Success");
+                    Log.d("Result","Success")
                 }
                 else{
-                    Log.d("Result",response);
+                    Log.d("Result",response)
                     Toast.makeText(context,response,Toast.LENGTH_SHORT).show()
                 }
             }, Response.ErrorListener {
