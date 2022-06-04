@@ -1,6 +1,6 @@
 package com.connect.connect
 
-import android.content.Intent
+
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -161,7 +161,4 @@ class PostDetailsActivity : AppCompatActivity() {
         SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
     }
 
-    override fun onBackPressed() {
-        startActivity(Intent(this,HomeScreen::class.java))
-    }
 }
