@@ -170,6 +170,7 @@
                 android:fontFamily="@font/poppins_medium"/>
 
             <LinearLayout
+                android:id="@+id/friend_list_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"

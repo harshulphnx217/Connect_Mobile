@@ -35,6 +35,8 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var profileCountryTv: TextView
     private lateinit var profileFriendsTv: TextView
 
+    private lateinit var friendListLinearLayout: LinearLayout
+
 
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
@@ -60,6 +62,7 @@ class ProfileActivity : AppCompatActivity() {
         profileFriendsTv = findViewById(R.id.profile_friends_tv)
         profileImageView = findViewById(R.id.profile_image_view)
         profilePostArchiveLayout = findViewById(R.id.profile_post_archive_layout)
+        friendListLinearLayout = findViewById(R.id.friend_list_ll)
 
         if (apiKey != null) {
             getUserInfo(apiKey)
@@ -82,6 +85,10 @@ class ProfileActivity : AppCompatActivity() {
 
         profilePostArchiveLayout.setOnClickListener {
             startActivity(Intent(this,PostsArchiveActivity::class.java))
+        }
+
+        friendListLinearLayout.setOnClickListener {
+            startActivity(Intent(this,FriendListActivity::class.java))
         }
 
     }
