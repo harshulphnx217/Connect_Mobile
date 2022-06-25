@@ -13,6 +13,7 @@ import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import org.json.JSONObject
 import org.w3c.dom.Text
 import java.util.concurrent.TimeUnit
@@ -36,6 +37,8 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var profileFriendsTv: TextView
 
     private lateinit var friendListLinearLayout: LinearLayout
+
+    private lateinit var findFriendsBtn: MaterialButton
 
 
     private lateinit var sharedPreferences: SharedPreferences
@@ -63,6 +66,7 @@ class ProfileActivity : AppCompatActivity() {
         profileImageView = findViewById(R.id.profile_image_view)
         profilePostArchiveLayout = findViewById(R.id.profile_post_archive_layout)
         friendListLinearLayout = findViewById(R.id.friend_list_ll)
+        findFriendsBtn = findViewById(R.id.find_friends_btn)
 
         if (apiKey != null) {
             getUserInfo(apiKey)
@@ -91,6 +95,10 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(Intent(this,FriendListActivity::class.java))
         }
 
+        findFriendsBtn.setOnClickListener {
+            startActivity(Intent(this,AllUsersListActivity::class.java))
+        }
+
     }
     // user/get-user-info
     private fun getUserInfo(apiKey:String){
@@ -103,7 +111,7 @@ class ProfileActivity : AppCompatActivity() {
                 val responseJson = JSONObject(response)
                 if(responseJson.getInt("status") == 200){
                     val resultObj: JSONObject = responseJson.getJSONObject("result")
-                    Log.d("response",response)
+//                    Log.d("response",response)
                     userIdTv.text = resultObj.getString("user_id")
                     bioTv.text = resultObj.getString("bio")
                     profileNameTv.text = resultObj.getString("first_name") + " " + resultObj.getString("last_name")
