@@ -5,6 +5,8 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -22,6 +24,7 @@ class HomeScreen : AppCompatActivity() {
     private lateinit var postRecyclerView: RecyclerView
     private lateinit var profileBtn: CircleImageView
     private lateinit var homeRefreshLayout: SwipeRefreshLayout
+    private lateinit var postNotFoundTv: TextView
 
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
@@ -35,6 +38,8 @@ class HomeScreen : AppCompatActivity() {
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE)
         val apiKey = sharedPreferences.getString(KEY_APIKEY, null)
+
+        postNotFoundTv = findViewById(R.id.post_not_fount_tv)
 
         profileBtn = findViewById(R.id.profile_btn)
 
@@ -84,10 +89,15 @@ class HomeScreen : AppCompatActivity() {
                             postTemp.getString("profile_pic"))
                         postArray.add(postObj)
                     }
+                    Log.wtf("Post",postArray.size.toString())
                     postRecyclerView.adapter = PostAdapter(postArray,apiKey)
+                    if(postArray.size == 0){
+                        postRecyclerView.visibility = View.GONE
+                        postNotFoundTv.visibility = View.VISIBLE
+                    }
                 }
                 else{
-                    Toast.makeText(this,"Invalid API Key",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,responseJson.getString("result"),Toast.LENGTH_LONG).show()
                 }
             }, Response.ErrorListener {
                     error ->
@@ -115,6 +125,7 @@ class HomeScreen : AppCompatActivity() {
             url,
             Response.Listener {
                     response ->
+                Log.wtf("res",response)
                 val responseJson = JSONObject(response)
                 if(responseJson.getInt("status") == 200){
                     val resultObj: JSONObject = responseJson.getJSONObject("result")
@@ -128,7 +139,7 @@ class HomeScreen : AppCompatActivity() {
 
                 }
                 else{
-                    Toast.makeText(this,"Invalid API Key",Toast.LENGTH_LONG).show()
+//                    Toast.makeText(this,"Invalid API Key",Toast.LENGTH_LONG).show()
                 }
             }, Response.ErrorListener {
                     error ->
