@@ -22,6 +22,8 @@
         <entry key="app/src/main/res/drawable/ic_logout_icon.xml" value="0.1365" />
         <entry key="app/src/main/res/drawable/ic_post_comment_icon.xml" value="0.1365" />
         <entry key="app/src/main/res/drawable/ic_post_icon.xml" value="0.1365" />
+        <entry key="app/src/main/res/drawable/ic_round_calendar_icon.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable/ic_round_mail_icon.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/ic_tick_icon.xml" value="0.146" />
         <entry key="app/src/main/res/drawable/input_layout.xml" value="0.1605" />
         <entry key="app/src/main/res/drawable/registration_card_layout.xml" value="0.146" />
@@ -35,6 +37,7 @@
         <entry key="app/src/main/res/layout/activity_posts_archive.xml" value="0.25364583333333335" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_user_detail.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/all_user_list_item.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/comment_item.xml" value="0.22962962962962963" />
         <entry key="app/src/main/res/layout/friend_list_item.xml" value="0.25" />

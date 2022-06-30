@@ -12,8 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect">
         <activity
+            android:name=".UserDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
             android:name=".AllUsersListActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".FriendListActivity"
             android:exported="false"
