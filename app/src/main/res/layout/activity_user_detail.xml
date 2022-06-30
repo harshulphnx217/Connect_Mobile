@@ -74,6 +74,28 @@
                 android:fontFamily="@font/poppins_medium"/>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_baseline_account_circle_24"/>
+                <TextView
+                    android:id="@+id/user_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:textColor="@color/blue"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="John Doe"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/email_tv_ll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -131,7 +153,7 @@
                     android:layout_margin="5dp"
                     android:src="@drawable/ic_friends_icon"/>
                 <TextView
-                    android:id="@+id/profile_friends_tv"
+                    android:id="@+id/user_friends_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"

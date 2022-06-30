@@ -1,9 +1,11 @@
 package com.connect.connect
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -16,6 +18,7 @@ class AllUsersAdapter(private val allUserList:ArrayList<AllUser>, private val ap
         val userNameTv: TextView = view.findViewById(R.id.user_name_tv)
         val userCountryTv: TextView = view.findViewById(R.id.user_country_tv)
         val addFriendBtn: ImageView = view.findViewById(R.id.add_friend_btn)
+        val mainLayout: LinearLayout = view.findViewById(R.id.main_layout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -34,6 +37,11 @@ class AllUsersAdapter(private val allUserList:ArrayList<AllUser>, private val ap
             .placeholder(R.drawable.ic_baseline_account_circle_24)
             .error(R.drawable.ic_baseline_account_circle_24)
             .into(holder.userProfilePic)
+
+        holder.mainLayout.setOnClickListener{
+            val intent = Intent(holder.itemView.context, UserDetailActivity::class.java)
+            holder.itemView.context.startActivity(intent.putExtra("user_id",user.user_id))
+        }
 
     }
 

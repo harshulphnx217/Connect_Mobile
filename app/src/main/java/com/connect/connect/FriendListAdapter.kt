@@ -1,9 +1,11 @@
 package com.connect.connect
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -15,6 +17,7 @@ class FriendListAdapter(private val friendList:ArrayList<Friend>, private val ap
         val friendUserNameTv: TextView = view.findViewById(R.id.friend_user_name_tv)
         val friendCountryTv: TextView = view.findViewById(R.id.friend_country_tv)
         val removeFriendBtn: ImageView = view.findViewById(R.id.remove_friend_btn)
+        val friendsLayout: LinearLayout = view.findViewById(R.id.friends_layout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,6 +36,11 @@ class FriendListAdapter(private val friendList:ArrayList<Friend>, private val ap
             .placeholder(R.drawable.ic_baseline_account_circle_24)
             .error(R.drawable.ic_baseline_account_circle_24)
             .into(holder.friendProfilePic)
+
+        holder.friendsLayout.setOnClickListener{
+            val intent = Intent(holder.itemView.context, UserDetailActivity::class.java)
+            holder.itemView.context.startActivity(intent.putExtra("user_id",friend.user_id))
+        }
     }
 
     override fun getItemCount(): Int {
