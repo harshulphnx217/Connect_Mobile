@@ -42,6 +42,7 @@
         <entry key="app/src/main/res/layout/all_user_list_item.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/comment_item.xml" value="0.22962962962962963" />
         <entry key="app/src/main/res/layout/friend_list_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/notification_bell_layout.xml" value="0.30885416666666665" />
         <entry key="app/src/main/res/layout/post_item.xml" value="0.22962962962962963" />
       </map>
     </option>
