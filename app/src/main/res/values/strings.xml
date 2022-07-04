@@ -21,5 +21,7 @@
     <string name="please_wait_we_are_registering_you_to_our_service">Please Wait we are registering you to our service</string>
     <string name="back_to_login">Back to login</string>
     <string name="india">India</string>
+    <string name="post">Post</string>
+    <string name="edit_profile">Edit Profile</string>
     <string name="john_doe">John Doe</string>
 </resources>
