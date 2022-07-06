@@ -22,4 +22,6 @@
     <string name="back_to_login">Back to login</string>
     <string name="india">India</string>
     <string name="john_doe">John Doe</string>
+    <string name="accept_request">Accept Request</string>
+    <string name="reject_request">Reject Request</string>
 </resources>
