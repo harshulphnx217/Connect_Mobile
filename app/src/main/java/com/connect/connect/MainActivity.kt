@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.DefaultRetryPolicy
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var loginBtn: Button
     private lateinit var phoneNumberEt: EditText
     private lateinit var passwordEt: EditText
+    private lateinit var resetPasswordBtn:TextView
 
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
@@ -36,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         phoneNumberEt = findViewById(R.id.phone_input_et)
         passwordEt = findViewById(R.id.password_input_et)
         loginBtn = findViewById(R.id.login_btn)
+        resetPasswordBtn = findViewById(R.id.reset_password_btn)
+
+        resetPasswordBtn.setOnClickListener {
+            startActivity(Intent(this,ForgotPasswordActivity::class.java))
+        }
 
         goToRegister = findViewById(R.id.register_btn)
         goToRegister.setOnClickListener{
