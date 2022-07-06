@@ -39,11 +39,14 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var friendListLinearLayout: LinearLayout
 
     private lateinit var findFriendsBtn: MaterialButton
+    private lateinit var notificationLayout: LinearLayout
 
 
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
     private val KEY_APIKEY = "APIKey"
+
+    private lateinit var userId:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +70,7 @@ class ProfileActivity : AppCompatActivity() {
         profilePostArchiveLayout = findViewById(R.id.profile_post_archive_layout)
         friendListLinearLayout = findViewById(R.id.friend_list_ll)
         findFriendsBtn = findViewById(R.id.find_friends_btn)
+        notificationLayout = findViewById(R.id.notification_layout)
 
         if (apiKey != null) {
             getUserInfo(apiKey)
@@ -99,6 +103,10 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(Intent(this,AllUsersListActivity::class.java))
         }
 
+        notificationLayout.setOnClickListener {
+            startActivity(Intent(this,FriendRequestsActivity::class.java).putExtra("user_id",userId))
+        }
+
     }
     // user/get-user-info
     private fun getUserInfo(apiKey:String){
@@ -112,6 +120,7 @@ class ProfileActivity : AppCompatActivity() {
                 if(responseJson.getInt("status") == 200){
                     val resultObj: JSONObject = responseJson.getJSONObject("result")
 //                    Log.d("response",response)
+                    userId  = resultObj.getString("user_id")
                     userIdTv.text = resultObj.getString("user_id")
                     bioTv.text = resultObj.getString("bio")
                     profileNameTv.text = resultObj.getString("first_name") + " " + resultObj.getString("last_name")

@@ -125,7 +125,7 @@ class HomeScreen : AppCompatActivity() {
             url,
             Response.Listener {
                     response ->
-                Log.wtf("res",response)
+//                Log.wtf("res",response)
                 val responseJson = JSONObject(response)
                 if(responseJson.getInt("status") == 200){
                     val resultObj: JSONObject = responseJson.getJSONObject("result")
