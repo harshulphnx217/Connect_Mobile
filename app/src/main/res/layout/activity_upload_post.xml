@@ -75,7 +75,7 @@
                 android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/email_field"
+                android:id="@+id/post_heading_et"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -89,7 +89,7 @@
                 android:textColorHint="@color/light_blue" />
 
             <EditText
-                android:id="@+id/desc_field"
+                android:id="@+id/post_desc_et"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
@@ -104,6 +104,7 @@
 
 
             <Button
+                android:id="@+id/post_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
