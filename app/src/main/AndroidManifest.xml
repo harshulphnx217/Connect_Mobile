@@ -12,8 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Connect">
         <activity
-            android:name=".FriendRequestsActivity"
+            android:name=".UploadPostActivity"
             android:exported="false" />
+        <activity
+            android:name=".FriendRequestsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".UserDetailActivity"
             android:exported="false"
@@ -32,10 +44,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ProfileActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ChangePassword"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
