@@ -24,4 +24,6 @@
     <string name="post">Post</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="john_doe">John Doe</string>
+    <string name="accept_request">Accept Request</string>
+    <string name="reject_request">Reject Request</string>
 </resources>

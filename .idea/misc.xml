@@ -20,6 +20,18 @@
         <entry key="..\:/Users/walia/Desktop/vsprojects/Connect_Mobile/app/src/main/res/layout/activity_upload_post.xml" value="0.2" />
         <entry key="..\:/Users/walia/Desktop/vsprojects/Connect_Mobile/app/src/main/res/layout/checkbox_selector.xml" value="0.11354166666666667" />
         <entry key="app/src/main/res/layout/activity_home_screen.xml" value="0.22962962962962963" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.20131225585937504" />
+        <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.22962962962962963" />
+        <entry key="app/src/main/res/layout/activity_posts_archive.xml" value="0.25364583333333335" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_user_detail.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/all_user_list_item.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/layout/comment_item.xml" value="0.22962962962962963" />
+        <entry key="app/src/main/res/layout/friend_list_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/friend_request_item_layout.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/notification_bell_layout.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/layout/post_item.xml" value="0.22962962962962963" />
       </map>
     </option>
   </component>
