@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
@@ -25,6 +26,7 @@ class HomeScreen : AppCompatActivity() {
     private lateinit var profileBtn: CircleImageView
     private lateinit var homeRefreshLayout: SwipeRefreshLayout
     private lateinit var postNotFoundTv: TextView
+    private lateinit var uploadPostBtn: ImageView
 
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
@@ -40,6 +42,7 @@ class HomeScreen : AppCompatActivity() {
         val apiKey = sharedPreferences.getString(KEY_APIKEY, null)
 
         postNotFoundTv = findViewById(R.id.post_not_fount_tv)
+        uploadPostBtn = findViewById(R.id.upload_post_btn)
 
         profileBtn = findViewById(R.id.profile_btn)
 
@@ -50,6 +53,10 @@ class HomeScreen : AppCompatActivity() {
 
         profileBtn.setOnClickListener {
             startActivity(Intent(this,ProfileActivity::class.java))
+        }
+
+        uploadPostBtn.setOnClickListener {
+            startActivity(Intent(this,UploadPostActivity::class.java))
         }
 
         postRecyclerView = findViewById(R.id.post_recycler_view)
