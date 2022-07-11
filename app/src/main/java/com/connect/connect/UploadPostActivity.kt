@@ -33,6 +33,8 @@ class UploadPostActivity : AppCompatActivity() {
     private lateinit var progressTextView: TextView
     private lateinit var backToHomeBtn: Button
 
+    private lateinit var backBtn:ImageView
+
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
     private val KEY_APIKEY = "APIKey"
@@ -62,6 +64,12 @@ class UploadPostActivity : AppCompatActivity() {
         failedAnimationView = findViewById(R.id.failed_animation_post)
         progressTextView = findViewById(R.id.progress_text_post)
         backToHomeBtn = findViewById(R.id.back_to_home_btn_post)
+
+        backBtn = findViewById(R.id.backbtn)
+
+        backBtn.setOnClickListener {
+            startActivity(Intent(this,HomeScreen::class.java))
+        }
 
         postImageView.setOnClickListener{
             launchGallery();
@@ -93,7 +101,6 @@ class UploadPostActivity : AppCompatActivity() {
         backToHomeBtn.setOnClickListener{
             startActivity(Intent(this,HomeScreen::class.java))
         }
-
     }
 
     private fun launchGallery() {
@@ -174,5 +181,9 @@ class UploadPostActivity : AppCompatActivity() {
             }
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this,HomeScreen::class.java))
     }
 }
