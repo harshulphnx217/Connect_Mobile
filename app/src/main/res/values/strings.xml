@@ -26,4 +26,6 @@
     <string name="john_doe">John Doe</string>
     <string name="accept_request">Accept Request</string>
     <string name="reject_request">Reject Request</string>
+    <string name="please_wait_we_are_uploading_your_post">Please Wait We are Uploading your Post!</string>
+    <string name="back_home">Back Home</string>
 </resources>
