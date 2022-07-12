@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
+        android:padding="8dp"
         android:src="@drawable/ic_back_icon"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,10 +21,10 @@
         app:layout_constraintVertical_bias="0.0" />
 
 
-    <ImageView
-        android:id="@+id/profile_pic"
-        android:layout_width="172dp"
-        android:layout_height="139dp"
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_pic_upload"
+        android:layout_width="150dp"
+        android:layout_height="110dp"
         android:layout_marginEnd="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,25 +33,27 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="20dp"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/ic_baseline_account_circle_24" />
+        android:src="@drawable/ic_baseline_account_circle_24" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:elevation="60dp"
-        app:cardCornerRadius="20dp"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_pic"
+        app:layout_constraintTop_toBottomOf="@+id/profile_pic_upload"
         app:layout_constraintVertical_bias="0.0">
-        <ScrollView
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:elevation="60dp"
+            app:cardCornerRadius="20dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -130,7 +133,7 @@
                         android:layout_marginEnd="5dp"
                         android:background="@null"
                         android:fontFamily="@font/poppins_regular"
-                        android:hint="First Name"
+                        android:hint="Last Name"
                         android:inputType="textPersonName"
                         android:padding="10dp"
                         android:textColor="@color/blue"
@@ -197,6 +200,7 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="5dp"
                         android:background="@null"
+                        android:enabled="false"
                         android:fontFamily="@font/poppins_regular"
                         android:hint="Gender"
                         android:inputType="text"
@@ -224,7 +228,7 @@
                         android:layout_marginStart="8dp"
                         android:src="@drawable/ic_round_calendar_icon" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/date_of_birth_et"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -233,13 +237,47 @@
                         android:background="@null"
                         android:fontFamily="@font/poppins_regular"
                         android:hint="Date Of Birth"
-                        android:inputType="textEmailAddress"
+                        android:padding="10dp"
+                        android:textColor="@color/blue"
+                        android:textColorHint="@color/light_blue" />
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:id="@+id/Bio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginVertical="5dp"
+                    android:background="@drawable/input_layout"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="10dp"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/ic_account_icon" />
+
+                    <EditText
+                        android:id="@+id/bio_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="5dp"
+                        android:background="@null"
+                        android:fontFamily="@font/poppins_regular"
+                        android:hint="Bio"
+                        android:inputType="textLongMessage"
                         android:padding="10dp"
                         android:textColor="@color/blue"
                         android:textColorHint="@color/light_blue" />
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/edit_profile_submit_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
@@ -252,7 +290,9 @@
                     android:textColor="@color/white"
                     android:textSize="15sp" />
             </LinearLayout>
-        </ScrollView>
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

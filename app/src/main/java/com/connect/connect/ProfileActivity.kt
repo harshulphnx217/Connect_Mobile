@@ -37,6 +37,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var profileFriendsTv: TextView
 
     private lateinit var friendListLinearLayout: LinearLayout
+    private lateinit var editProfileLyt: LinearLayout
 
     private lateinit var findFriendsBtn: MaterialButton
     private lateinit var notificationLayout: LinearLayout
@@ -71,6 +72,7 @@ class ProfileActivity : AppCompatActivity() {
         friendListLinearLayout = findViewById(R.id.friend_list_ll)
         findFriendsBtn = findViewById(R.id.find_friends_btn)
         notificationLayout = findViewById(R.id.notification_layout)
+        editProfileLyt = findViewById(R.id.edit_profile_layout)
 
         if (apiKey != null) {
             getUserInfo(apiKey)
@@ -105,6 +107,11 @@ class ProfileActivity : AppCompatActivity() {
 
         notificationLayout.setOnClickListener {
             startActivity(Intent(this,FriendRequestsActivity::class.java).putExtra("user_id",userId))
+        }
+
+
+        editProfileLyt.setOnClickListener {
+            startActivity(Intent(this,EditProfileActivity::class.java))
         }
 
     }
