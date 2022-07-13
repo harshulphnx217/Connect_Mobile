@@ -22,7 +22,7 @@ class PostDetailsActivity : AppCompatActivity() {
     private lateinit var sharedPreferences: SharedPreferences
     private val SHARED_PREF_NAME = "myPref"
     private val KEY_APIKEY = "APIKey"
-
+    private lateinit var postCommentBtn : ImageView
     private lateinit var profileImg: CircleImageView
     private lateinit var userNameTv: TextView
     private lateinit var postImageView: ImageView
@@ -41,7 +41,7 @@ class PostDetailsActivity : AppCompatActivity() {
         val apiKey = sharedPreferences.getString(KEY_APIKEY, null)
 
         val postId:String = intent.getStringExtra("post_id").toString()
-
+        postCommentBtn = findViewById(R.id.post_comment_iv)
         profileImg = findViewById(R.id.post_detail_user_profile_pic)
         userNameTv = findViewById(R.id.post_detail_user_name_tv)
         postImageView = findViewById(R.id.post_detail_img)
@@ -51,6 +51,19 @@ class PostDetailsActivity : AppCompatActivity() {
         postLikesTv = findViewById(R.id.post_like_text_view)
         commentLayout = findViewById(R.id.comment_linear_layout)
         commentHereEt = findViewById(R.id.comment_here_et)
+
+        postCommentBtn.setOnClickListener{
+            if(commentHereEt.text.toString().isEmpty())
+            {
+                commentHereEt.error="You have not commented yet"
+                commentHereEt.requestFocus()
+                return@setOnClickListener
+            }
+            if (apiKey != null) {
+                postComment(apiKey,postId,commentHereEt.text.toString())
+            }
+
+        }
 
         if (apiKey != null) {
             getPostDetails(apiKey,postId)
@@ -160,5 +173,40 @@ class PostDetailsActivity : AppCompatActivity() {
         )
         SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
     }
-
+    private fun postComment(apiKey:String,postId:String,commentMessage:String){
+        val url = "https://connect-api-social.herokuapp.com/user/post_comment"
+        val stringRequest: StringRequest = object: StringRequest(
+            Method.POST,
+            url,
+            Response.Listener {
+                    response ->
+                val responseJson = JSONObject(response)
+                if(responseJson.getInt("status") == 200){
+                    Log.d("Result","Success")
+                    Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show()
+                }
+                else{
+                    Log.d("Result",response)
+                    Toast.makeText(this,response, Toast.LENGTH_SHORT).show()
+                }
+            }, Response.ErrorListener {
+                    error ->
+                Log.d("Volley Error",error.toString())
+            }){
+            override fun getParams(): MutableMap<String, String> {
+                val parameters: MutableMap<String, String> = HashMap()
+                // Add your parameters in HashMap
+                parameters["api_key"] = apiKey
+                parameters["post_id"] = postId
+                parameters["comment_message"] = commentMessage
+                return parameters
+            }
+        }
+        stringRequest.retryPolicy = DefaultRetryPolicy(
+            TimeUnit.SECONDS.toMillis(20).toInt(),  //After the set time elapses the request will timeout
+            1,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        )
+        SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
+    }
 }
