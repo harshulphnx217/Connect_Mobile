@@ -136,7 +136,7 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun getUserInfo(apiKey:String){
-        val url = "https://connect-api-social.herokuapp.com/user/get-user-info"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/get-user-info"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
@@ -184,7 +184,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     private fun editProfile(apiKey: String, firstName:String,lastName:String,country:String,
                             dateOfBirth:String,bio:String,gender:String){
-        val url = "https://connect-api-social.herokuapp.com/user/edit_profile"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/edit_profile"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
@@ -224,7 +224,7 @@ class EditProfileActivity : AppCompatActivity() {
     }
 
     private fun uploadPhoto(apiKey: String){
-        val url = "https://connect-api-social.herokuapp.com/user/upload-profile-pic"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/upload-profile-pic"
         val multipartRequest: VolleyMultipartRequest = object : VolleyMultipartRequest(
             Method.POST,
             url,

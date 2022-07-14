@@ -70,7 +70,7 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun getOtherUserInfo(userId:String, apiKey:String){
-        val url = "https://connect-api-social.herokuapp.com/user/get-other-user-info"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/get-other-user-info"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
@@ -117,7 +117,7 @@ class UserDetailActivity : AppCompatActivity() {
     }
 
     private fun getPosts(userId:String,apiKey: String){
-        val url = "https://connect-api-social.herokuapp.com/user/fetch-other-user-posts"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/fetch-other-user-posts"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

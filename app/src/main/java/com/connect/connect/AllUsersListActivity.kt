@@ -47,7 +47,7 @@ class AllUsersListActivity : AppCompatActivity() {
     }
 
     private fun getUserList(apiKey: String){
-        val url = "https://connect-api-social.herokuapp.com/user/get-user-list"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/get-user-list"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

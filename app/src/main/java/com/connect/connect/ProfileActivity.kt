@@ -117,7 +117,7 @@ class ProfileActivity : AppCompatActivity() {
     }
     // user/get-user-info
     private fun getUserInfo(apiKey:String){
-        val url = "https://connect-api-social.herokuapp.com/user/get-user-info"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/get-user-info"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

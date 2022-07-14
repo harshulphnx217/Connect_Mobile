@@ -62,7 +62,7 @@ class AllUsersAdapter(private val allUserList:ArrayList<AllUser>, private val ap
     }
 
     private fun initiateFriendRequest(apiKey: String,userId: String,context:Context){
-        val url = "https://connect-api-social.herokuapp.com/user/initiate-friend-request"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/initiate-friend-request"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

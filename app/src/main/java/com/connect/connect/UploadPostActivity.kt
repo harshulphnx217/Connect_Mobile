@@ -110,7 +110,7 @@ class UploadPostActivity : AppCompatActivity() {
     }
 
     private fun uploadPosts(apiKey:String,postHeading:String,postDesc:String){
-        val url = "https://connect-api-social.herokuapp.com/user/upload-post"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/upload-post"
         val multipartRequest: VolleyMultipartRequest = object : VolleyMultipartRequest(
             Method.POST,
             url,

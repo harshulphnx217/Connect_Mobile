@@ -89,7 +89,7 @@ class PostAdapter(private val postList: ArrayList<Post>,private val apiKey:Strin
     }
 
     private fun likePost(postId:String,context:Context){
-        val url = "https://connect-api-social.herokuapp.com/user/like_post"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/like_post"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

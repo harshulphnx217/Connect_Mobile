@@ -57,7 +57,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
     }
 
     private fun resetPassword(emailAddress:String){
-        val url = "https://connect-api-social.herokuapp.com/forgot_passoword"
+        val url = "https://connect-social-api-prod.herokuapp.com/forgot_passoword"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

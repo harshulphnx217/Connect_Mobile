@@ -61,10 +61,12 @@ class FriendRequestItemAdapter(private val apiKey:String,private val friendReque
 
         holder.requestRejectBtn.setOnClickListener {
             updateFriendRequest(apiKey,friendRequestItem.userId,holder.itemView.context,"REJECTED")
+            holder.btnLayout.visibility = View.GONE
         }
 
         holder.requestAcceptBtn.setOnClickListener {
             updateFriendRequest(apiKey,friendRequestItem.userId,holder.itemView.context,"ACCEPTED")
+            holder.btnLayout.visibility = View.GONE
         }
     }
 
@@ -73,7 +75,7 @@ class FriendRequestItemAdapter(private val apiKey:String,private val friendReque
     }
 
     private fun updateFriendRequest(apiKey:String, friendId:String,context: Context,requestStatus:String){
-        val url = "https://connect-api-social.herokuapp.com/user/update-friend-request"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/update-friend-request"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

@@ -99,7 +99,7 @@ class ChangePassword : AppCompatActivity() {
     }
 
     private fun changePassword(apiKey:String){
-        val url = "https://connect-api-social.herokuapp.com/user/change_password"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/change_password"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
