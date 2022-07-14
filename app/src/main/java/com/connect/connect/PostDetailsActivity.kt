@@ -250,6 +250,7 @@ class PostDetailsActivity : AppCompatActivity() {
                         else{
                             commentRecyclerView.adapter = CommentAdapter(commentArray)
                             commentRecyclerView.visibility = View.VISIBLE
+                            noCommentsMsgTv.visibility= View.GONE
                         }
                     }catch (e:Exception){
                         noCommentsMsgTv.visibility= View.VISIBLE
