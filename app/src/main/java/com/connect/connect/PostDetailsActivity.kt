@@ -4,6 +4,7 @@ package com.connect.connect
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.bumptech.glide.Glide
 import de.hdodenhof.circleimageview.CircleImageView
+import org.json.JSONArray
 import org.json.JSONObject
 import java.util.concurrent.TimeUnit
 
@@ -33,6 +35,10 @@ class PostDetailsActivity : AppCompatActivity() {
     private lateinit var commentLayout: LinearLayout
     private lateinit var commentHereEt: EditText
 
+    private lateinit var noCommentsMsgTv: TextView
+
+    private val commentArray: ArrayList<Comment> = ArrayList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_post_details)
@@ -51,6 +57,7 @@ class PostDetailsActivity : AppCompatActivity() {
         postLikesTv = findViewById(R.id.post_like_text_view)
         commentLayout = findViewById(R.id.comment_linear_layout)
         commentHereEt = findViewById(R.id.comment_here_et)
+        noCommentsMsgTv = findViewById(R.id.no_comments_msg_tv)
 
         postCommentBtn.setOnClickListener{
             if(commentHereEt.text.toString().isEmpty())
@@ -67,6 +74,7 @@ class PostDetailsActivity : AppCompatActivity() {
 
         if (apiKey != null) {
             getPostDetails(apiKey,postId)
+            getComment(apiKey,postId)
         }
 
        likeLayout.setOnClickListener{
@@ -83,7 +91,6 @@ class PostDetailsActivity : AppCompatActivity() {
         }
 
         commentRecyclerView = findViewById(R.id.commentRecyclerView)
-        commentRecyclerView.adapter = CommentAdapter()
     }
 
     private fun getPostDetails(apiKey: String,postId: String){
@@ -181,9 +188,11 @@ class PostDetailsActivity : AppCompatActivity() {
             Response.Listener {
                     response ->
                 val responseJson = JSONObject(response)
-                if(responseJson.getInt("status") == 200){
+                if(responseJson.getInt("status") == 201){
                     Log.d("Result","Success")
                     Toast.makeText(this,"Success",Toast.LENGTH_SHORT).show()
+                    getComment(apiKey,postId)
+                    commentHereEt.setText("")
                 }
                 else{
                     Log.d("Result",response)
@@ -209,4 +218,70 @@ class PostDetailsActivity : AppCompatActivity() {
         )
         SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
     }
+
+    private fun getComment(apiKey:String,postId:String){
+        val url = "https://connect-social-api-prod.herokuapp.com/post/get_comments"
+        val stringRequest: StringRequest = object: StringRequest(
+            Method.POST,
+            url,
+            Response.Listener {
+                    response ->
+                val responseJson = JSONObject(response)
+                if(responseJson.getInt("status") == 200){
+                    try{
+                        val resultArray: JSONArray = responseJson.getJSONArray("result")
+                        commentArray.clear()
+                        for(i in 0 until resultArray.length()){
+                            val commentTemp: JSONObject = resultArray.getJSONObject(i)
+                            val commentObj = Comment(
+                                commentTemp.getString("user_id"),
+                                commentTemp.getString("comment_id"),
+                                commentTemp.getString("post_id"),
+                                commentTemp.getString("comment_date_time"),
+                                commentTemp.getString("comment_message"),
+                                commentTemp.getString("user_profile_pic")
+                            )
+                            commentArray.add(commentObj)
+                        }
+                        if(commentArray.size == 0){
+                            noCommentsMsgTv.visibility= View.VISIBLE
+                            commentRecyclerView.visibility = View.GONE
+                        }
+                        else{
+                            commentRecyclerView.adapter = CommentAdapter(commentArray)
+                            commentRecyclerView.visibility = View.VISIBLE
+                            noCommentsMsgTv.visibility= View.GONE
+                        }
+                    }catch (e:Exception){
+                        noCommentsMsgTv.visibility= View.VISIBLE
+                        commentRecyclerView.visibility = View.GONE
+                    }
+                }
+                else{
+                    Log.d("Result",response)
+                    Toast.makeText(this,response, Toast.LENGTH_SHORT).show()
+                    noCommentsMsgTv.visibility= View.VISIBLE
+                    commentRecyclerView.visibility = View.GONE
+                }
+            }, Response.ErrorListener {
+                    error ->
+                Log.d("Volley Error",error.toString())
+            }){
+            override fun getParams(): MutableMap<String, String> {
+                val parameters: MutableMap<String, String> = HashMap()
+                // Add your parameters in HashMap
+                parameters["api_key"] = apiKey
+                parameters["post_id"] = postId
+                return parameters
+            }
+        }
+        stringRequest.retryPolicy = DefaultRetryPolicy(
+            TimeUnit.SECONDS.toMillis(20).toInt(),  //After the set time elapses the request will timeout
+            1,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        )
+        SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
+    }
+
+
 }
