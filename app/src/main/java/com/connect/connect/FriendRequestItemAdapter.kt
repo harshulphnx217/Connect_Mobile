@@ -44,16 +44,14 @@ class FriendRequestItemAdapter(private val apiKey:String,private val friendReque
         holder.requestStatusTv.text = "Status: "+friendRequestItem.requestStatus
         holder.requestDateTv.text = "Requested on: " + friendRequestItem.requestDate
 
-        if (friendRequestItem.requestStatus == "REJECTED"){
-            holder.msg.visibility = View.VISIBLE
+        if (friendRequestItem.requestStatus == "REJECTED" || friendRequestItem.requestStatus == "ACCEPTED" || friendRequestItem.userId.toString().trim() == userId){
             holder.btnLayout.visibility = View.GONE
-        }
-        else{
-            holder.msg.visibility = View.GONE
-            holder.btnLayout.visibility = View.VISIBLE
-        }
-        if (friendRequestItem.requestStatus == "ACCEPTED" || friendRequestItem.userId.toString().trim() == userId){
-            holder.btnLayout.visibility = View.GONE
+            if(friendRequestItem.requestStatus == "REJECTED"){
+                holder.msg.visibility = View.VISIBLE
+            }
+            else{
+                holder.msg.visibility = View.GONE
+            }
         }
         else{
             holder.btnLayout.visibility = View.VISIBLE
