@@ -52,7 +52,7 @@ class FriendRequestsActivity : AppCompatActivity() {
     }
 
     private fun getFriendRequests(apiKey:String){
-        val url = "https://connect-api-social.herokuapp.com/user/get-friend-req-list"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/get-friend-req-list"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

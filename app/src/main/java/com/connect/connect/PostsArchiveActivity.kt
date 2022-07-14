@@ -57,7 +57,7 @@ class PostsArchiveActivity : AppCompatActivity() {
     }
 
     private fun getPosts(apiKey:String){
-        val url = "https://connect-api-social.herokuapp.com/user/get-posts"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/get-posts"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

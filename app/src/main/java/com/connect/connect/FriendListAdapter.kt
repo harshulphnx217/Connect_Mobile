@@ -61,7 +61,7 @@ class FriendListAdapter(private val friendList:ArrayList<Friend>, private val ap
     }
 
     private fun removeFriend(apiKey:String, friendId:String,context: Context){
-        val url = "https://connect-api-social.herokuapp.com/user/update-friend-request"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/update-friend-request"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

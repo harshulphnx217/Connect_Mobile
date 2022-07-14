@@ -198,7 +198,7 @@ class Register : AppCompatActivity() {
     }
 
     private fun registerUser(){
-        val url = "https://connect-api-social.herokuapp.com/user/register"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/register"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

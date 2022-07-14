@@ -87,7 +87,7 @@ class PostDetailsActivity : AppCompatActivity() {
     }
 
     private fun getPostDetails(apiKey: String,postId: String){
-        val url = "https://connect-api-social.herokuapp.com/user/fetch_single_post"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/fetch_single_post"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
@@ -140,14 +140,14 @@ class PostDetailsActivity : AppCompatActivity() {
 
 
     private fun likePost(apiKey:String,postId:String){
-        val url = "https://connect-api-social.herokuapp.com/user/like_post"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/like_post"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
             Response.Listener {
                     response ->
                 val responseJson = JSONObject(response)
-                if(responseJson.getInt("status") == 200){
+                if(responseJson.getInt("status") == 201){
                     Log.d("Result","Success")
                 }
                 else{
@@ -174,7 +174,7 @@ class PostDetailsActivity : AppCompatActivity() {
         SingletonRequestQueue.getInstance(this).addToRequestQueue(stringRequest)
     }
     private fun postComment(apiKey:String,postId:String,commentMessage:String){
-        val url = "https://connect-api-social.herokuapp.com/user/post_comment"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/post_comment"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,

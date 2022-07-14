@@ -72,7 +72,7 @@ class HomeScreen : AppCompatActivity() {
     }
 
     private fun getPosts(apiKey:String){
-        val url = "https://connect-api-social.herokuapp.com/friend/get-posts"
+        val url = "https://connect-social-api-prod.herokuapp.com/friend/get-posts"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
@@ -81,26 +81,30 @@ class HomeScreen : AppCompatActivity() {
                 val responseJson = JSONObject(response)
                 homeRefreshLayout.isRefreshing = false
                 if(responseJson.getInt("status") == 200){
-                    val resultArray: JSONArray = responseJson.getJSONArray("result")
-                    postArray.clear()
-                    for(i in 0 until resultArray.length()){
-                        val postTemp: JSONObject = resultArray.getJSONObject(i)
-                        val postObj = Post(postTemp.getString("posted_by"),
-                            postTemp.getString("post_id"),
-                            postTemp.getString("post_title"),
-                            postTemp.getString("post_img"),
-                            postTemp.getString("post_desc"),
-                            postTemp.getString("post_upload_date_time"),
-                            postTemp.getString("number_of_likes"),
-                            postTemp.getString("number_of_comments"),
-                            postTemp.getString("profile_pic"))
-                        postArray.add(postObj)
-                    }
-                    Log.wtf("Post",postArray.size.toString())
-                    postRecyclerView.adapter = PostAdapter(postArray,apiKey)
-                    if(postArray.size == 0){
-                        postRecyclerView.visibility = View.GONE
-                        postNotFoundTv.visibility = View.VISIBLE
+                    Log.d("response",response)
+                    try{
+                        val resultArray: JSONArray = responseJson.getJSONArray("result")
+                        postArray.clear()
+                        for(i in 0 until resultArray.length()){
+                            val postTemp: JSONObject = resultArray.getJSONObject(i)
+                            val postObj = Post(postTemp.getString("posted_by"),
+                                postTemp.getString("post_id"),
+                                postTemp.getString("post_title"),
+                                postTemp.getString("post_img"),
+                                postTemp.getString("post_desc"),
+                                postTemp.getString("post_upload_date_time"),
+                                postTemp.getString("number_of_likes"),
+                                postTemp.getString("number_of_comments"),
+                                postTemp.getString("profile_pic"))
+                            postArray.add(postObj)
+                        }
+                        postRecyclerView.adapter = PostAdapter(postArray,apiKey)
+                        if(postArray.size == 0){
+                            postRecyclerView.visibility = View.GONE
+                            postNotFoundTv.visibility = View.VISIBLE
+                        }
+                    }catch(e:Exception){
+                        Toast.makeText(this,"Posts Not Found!",Toast.LENGTH_SHORT).show()
                     }
                 }
                 else{
@@ -126,7 +130,7 @@ class HomeScreen : AppCompatActivity() {
     }
 
     private fun getProfilePic(apiKey: String){
-        val url = "https://connect-api-social.herokuapp.com/user/fetch-personal-profile"
+        val url = "https://connect-social-api-prod.herokuapp.com/user/fetch-personal-profile"
         val stringRequest: StringRequest = object: StringRequest(
             Method.POST,
             url,
